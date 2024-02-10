@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- <meta charset="utf-8" /> -->
+<!-- 		<meta name="description" content="CookGAN, the AI for cooking" />
+		<meta property="og:type"          content="website" />
+		<meta property="og:url"           content="http://www.foodai.cs.rutgers.edu" />
+		<meta property="og:title"         content="CookGAN" />
+		<meta property="og:description"   content="The AI for cooking" />
+		<meta property="og:image"         content="http://foodai.cs.rutgers.edu/static/card.png" />
+		<meta name="twitter:title"   content="CookGAN" />
+		<meta name="twitter:description"   content="The AI for cooking" />
+		<meta name="twitter:image" content="http://foodai.cs.rutgers.edu/static/card.png" />
+		<meta name="twitter:card" content="The AI for cooking" />
+		<meta name="twitter:url"   content="https://www.foodai.cs.rutgers.edu" />
+		<meta name="twitter:creator" content="@fangda_han"> -->
+
+		
+
+		<title>CookGAN</title>
+		<meta name="description" content="The AI for cooking!">
+		
+		<!-- Google / Search Engine Tags -->
+		<meta itemprop="name" content="CookGAN">
+		<meta itemprop="description" content="The AI for cooking!">
+		<meta itemprop="image" content="http://foodai.cs.rutgers.edu/static/images/card.png">
+		
+		<!-- Facebook Meta Tags -->
+		<meta property="og:url" content="http://foodai.cs.rutgers.edu">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="CookGAN">
+		<meta property="og:description" content="The AI for cooking!">
+		<meta property="og:image" content="http://foodai.cs.rutgers.edu/static/images/card.png">
+		
+		<!-- Twitter Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="CookGAN">
+		<meta name="twitter:description" content="The AI for cooking!">
+		<meta name="twitter:image" content="http://foodai.cs.rutgers.edu/static/images/card.png">
+		<!--location for flask server -->
+		<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		<link rel="stylesheet" href="static/css/test.css" />
+		<link rel="shortcut icon" href="static/assets/favicon.ico" type="image/x-icon">
+		<!-- actual relative position -->
+		<link rel="stylesheet" href="css/test.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.css" />
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+		 crossorigin="anonymous"></script>
+		 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_CN/sdk.js#xfbml=1&version=v7.0" nonce="DzF28wky"></script>
+		 <!-- <script src="static/js/selectize.min.js"charset="utf-8"> </script> -->
+
+		 <script src="static/js/selectize.min.js"charset="utf-8"> </script>
+		<!-- <script src="https://cdn.bootcdn.net/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script> -->
+
+	</head>
+	<body>
+
+			<div class="header_div">
+
+			<a id="scroll_cook" class = "scroll_button"  href="javascript:scroll('#cook_div');">Cook</a>
+			<a id="scroll_explore"class = "scroll_button" href="javascript:scroll('#explore_div');">Explore</a>
+			<a id="scroll_learn"class = "scroll_button" href="javascript:scroll('#learn_div');">Learn</a>
+			<a id="scroll_contact"class = "scroll_button" href="javascript:scroll('#contact_div');">Contact</a>
+
+			</div>
+			<div style="margin-top: -80px;"></div>
+		<h1 align="center" style="font-size: 144px; margin-bottom: -25px;font-weight: 800;">CookGAN</h1>
+		<h1 style="margin-top: 5px;"align="center">The AI for Cooking</h1>
+<div class="bigdiv" id="cook_div" style="background-image:linear-gradient(0deg, rgba(89, 184, 66, 0.5), rgba(98, 184, 66, 0.5)), url(static/images/cook_background.jpeg);background-repeat: no-repeat;background-size: cover;">
+				<h1  align="center" class = "div_title">Cook</h1>
+				<h4 style=" margin:10px ;"align="center">Create your own dish by selecting its type and its ingedients!</h4>
+				　　<form>
+					<label>What type of dish?</label>
+					　　<input id="salad_ratio" onclick="food_type_ratio_onclick()" type="radio" name="food_type_ratio" value="salad" >Salad
+					　　<input id="cookie_ratio" onclick="food_type_ratio_onclick()" type="radio" name="food_type_ratio" value="cookie">Cookie
+					　　<input id="muffin_ratio" onclick="food_type_ratio_onclick()" type="radio" name="food_type_ratio" value="muffin">Muffin
+				</form>
+				<br/>
+<table align="center" style="width: 100%">
+						<tr>		
+							<td padding='0px' width="180px">
+								<div>
+								<label>What's on your plate?</label>
+								</div>	
+							</td>
+							<td style="white-space: nowrap; ">
+
+	<select id="plate" class="mytextbox" style="display: inline-block;margin-top: 30px;border-radius: 45px;font-weight: normal;">
+		<option value=""></option>
+	</select>
+							</td>
+						</tr>
+
+					</table>
+<!-- 				<label>What's on your plate?&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<!-- 				<div style="margin-top: 6px;"style="font-weight: normal;">
+					</div> -->
+<!-- 				<div style="display: inline-block;margin-bottom: 4px;
+	vertical-align: text-bottom; ">
+				<select id="plate" class="mytextbox" style="display: inline-block;margin-top: 30px;border-radius: 45px;font-weight: normal;">
+					<option value=""></option>
+				</select>
+				</div> --> 
+				<div style="text-align:center">
+					<button onclick="cook_plate()" id="synthesize_button">Create</button>
+					<button onclick="feel_lucky()" id="feel_lucky_button">Feel Lucky</button>
+				</div>
+				<div align="center" style="margin-top: 25px;">
+				<label>Do you think this image is a real dish?&nbsp;&nbsp; (Leave us a feedback to skip the waiting time)</label>
+				<div style="margin-bottom: 14px;"></div>
+				<input class="number_radio" type="radio" name="rating_ratio" value="1">Kidding me? Not at all!&nbsp;
+				<input class="number_radio" type="radio" name="rating_ratio" value="2">Not so real&nbsp;
+				<input class="number_radio" type="radio" name="rating_ratio" value="3">Maybe, I can't tell&nbsp;
+				<input class="number_radio" type="radio" name="rating_ratio" value="4">It seems real&nbsp;
+				<input class="number_radio" type="radio" name="rating_ratio" value="5">It is so real!&nbsp;
+				<button id="rating_button" onclick="submit_rating()" value="Tell them!" style="margin-top: 0px; margin-left: 5px; margin-right: -15px;">Tell them!</button>
+				<div style="margin-top: 5px;"></div>
+								
+
+				<div id="generate_image_div" class="picdiv">
+					<img id='generated_image' style='width:512px;height:512px;border-radius: 30px;' src="static/images/cooking_image.gif"/>
+
+				</div>
+				<div style="margin-top: -5px;"></div>
+								
+				</div>
+			</div>
+		<div class="bigdiv" id="explore_div"style="background-image:linear-gradient(0deg, rgba(172, 47, 19, 0.57), rgba(172, 47, 19, 0.57)), url(static/images/explore_background.jpeg);background-repeat: no-repeat;background-size: cover;">
+			<h1 align="center"class = "div_title">Explore</h1>
+			<h4 style="font-weight:500;margin:10px ;"align="center">Explore our existing gallery of dishes -- real versus synthetic!</h4>
+			<div style="margin-top: -5px;"></div>
+
+			<div style="text-align:center">
+			<button onclick="example_dish()" style="width: 200px;">Get a random dish!</button>
+			</div>
+			<table align="center" style=" font-size: 16px;boarder-spacing:50px 100px">
+				<div style="margin-top: 20px;"></div>
+				<tr>
+					<td align="center"  >Real Photo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td align="center">Synthetic Image</td>
+				</tr>
+				<tr>
+					<td><img id="example_real_image" style="margin-right:40px;width:256px;height:256px;margin-top: 10px;border-radius: 15px;"/></td>
+					<td><img id="example_fake_image"style="width:256px;height:256px;margin-top: 10px;border-radius: 15px;"/></td>
+				</tr>
+			</table>
+			<div style="margin: 10px;"></div>
+			<div id="example_label_div" align="center" style="width: 90%;">
+			</div>
+		</div>
+			
+			<div class="bigdiv" ,align="center" id="learn_div"style="background-image:linear-gradient(0deg, rgba(219, 223, 22, 0.4), rgba(219, 223, 22, 0.4)), url(static/images/learn_background.jpeg);background-repeat: no-repeat;background-size: cover;">
+				<h1 align="center"class = "div_title">Learn</h1>
+				<h4 style="font-weight:500;margin:10px ;"align="center">Learn more about the AI behind CookGAN.</h4>
+				
+				<div style="margin-top: 10px;"></div>
+				<table align="center" style="width:80%;font-weight: bold; font-size: 24px;">
+					<tr>
+						<td width="100px"align="center"><a style="color: white; font-size: 18px;" href='http://openaccess.thecvf.com/content_WACV_2020/papers/Han_CookGAN_Meal_Image_Synthesis_from_Ingredients_WACV_2020_paper.pdf', target='_blank'> Paper</a></td>
+						<td width="100px"align="center"><a style="color: white;font-size: 18px;" href='https://arxiv.org/abs/2002.11493', target='_blank'> Arxiv</a></td>
+						<td width="100px"align="center"><a style="color: white;font-size: 18px;" href='http://seqamlab.com/2020/02/24/cookgan-meal-image-synthesis-from-ingredients/', target='_blank'> Review1</a></td>
+						<td width="100px"align="center"><a style="color: white;font-size: 18px;" href='https://medium.com/syncedreview/cookgan-generates-realistic-meal-images-from-an-ingredients-list-250426dbfab2', target='_blank'> Review2</a></td>
+					</tr>
+				</table>
+<div align="center" style="margin-top: 30px;">
+	<div align="center"style="text-align:center;width: 750px; height:500px;border-radius: 40px;overflow: hidden; ">
+		<!-- <iframe width="750" height="500"
+	src="http://www.youtube.com/embed/0jsteoeuZQY"></iframe> -->
+		<embed src="http://www.youtube.com/embed/0jsteoeuZQY" height="500" width="750"/>
+	</div>
+</div>
+				
+				
+				<h4 style="margin-bottom: 5px;">Motivation</h4>
+				<label>Synthesizing photo-realistic food meal images from textual descriptions of its ingredients.</label>
+				<h4 style="margin-bottom: 5px;">Methodology</h4>
+				<label>The framework first builds an attention-based ingredients-image association model, which is then used to condition a generative neural network tasked with synthesizing meal images.
+				 Furthermore, a cycle-consistent constraint is added to further improve image quality and control appearance.
+				 Preliminary experiments show our model is able to generate meal image corresponding to the ingredients list.</label>
+				<div style="margin-top: 20px;"></div>
+				<div style="background:rgba(244, 223, 147, 0.5);padding: 5px;border-radius: 20px;box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+					<img id="model_image" style="width: 100%;height:auto; border: 0px;margin-top:5px;margin-bottom: 5px;"/>
+				</div>
+				
+				<h4 style="margin-bottom: 5px;">Potential Applications</h4>
+				<label>Beyond its ability to help understand the relationship between two domains (i.e. natural languange and vision), a well trained model also has other applications, to name a few, Text visualization, Data augmentation, Cooking skill learning.</label>
+			</div>
+		<div >
+
+			</div>
+			<div id="contact_div" class=  "contactdiv">
+				<a style=" font-size: 48px; font-weight: bold; text-decoration: none;" href = "http://seqamlab.com/">SEQAM Lab</a>
+				<a style="float: right;font-size: 48px;font-weight: bold;text-decoration: none;" href =" https://research.samsung.com/aicenter"> Samsung AI Center</a>
+				<br>
+				<label >Department of Computer Science</label>
+				<label style="float: right;">Cambridge, UK</label>
+				<br>
+				<label>Rutgers University</label>
+				<br>
+				<label>New Jersey, USA</label>
+				
+				<div>
+			<table align="center" style="font-weight: bold; font-size: 24px;width: 400px">
+						<tr>		
+							<td width="130px">
+								<div>
+									<label style="font-weight: 800; font-size: 18px;"> Team</label><br>
+									<a class = "name_link" href="http://seqamlab.com/fangda-han/">Fangda Han</a>
+									<div style="margin-bottom: -10px;"></div>
+									<a class = "name_link" href="https://scholar.google.com/citations?user=bn2TAy8AAAAJ&hl=en">Ricardo Guerrero</a>
+									<div style="margin-bottom: -10px;"></div>
+									<a class = "name_link" href="http://seqamlab.com/vladimir-pavlovic/">Vladimir Pavlovic</a>
+									<div style="margin-bottom: -10px;"></div>
+									<a class = "name_link" href="https://www.linkedin.com/in/guoyao-hao-138207138/">Guoyao Hao</a>
+								</div>
+								
+								
+							</td>
+							<td width="150px">
+								<div style="padding: 0px;  vertical-align:initial;">
+									<label style="font-weight: 900; font-size: 16px;color: #212353"> Social Media</label>
+									<div style="margin-bottom: 20px;"></div>
+									<a href="javascript:open_share('facebook')" class="fa fa-facebook" ></a>
+									<a href="javascript:open_share('twitter')" class="fa fa-twitter"></a>
+									<!-- <a href="javascript:open_share('google')" class="fa fa-google"></a> -->
+									<div style="margin-bottom:28px;"></div>
+								</div>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+			</div>
+			
+	</body>
+
+	<script>
+		var ingredients = {}
+		var plate = null
+		var available_example = []
+		var example_number = -1
+		var is_rated = false
+		var generated_image_name = ""
+		var food_type = "salad"
+		var timeClock;
+		var countdown
+		var listen_plate_change;
+		//var serveraddress = 'http://127.0.0.1:5000/'
+		var serveraddress = "http://foodai.cs.rutgers.edu/"
+		$(document).ready(function() {
+			$("#model_image").attr('src', serveraddress + "static/model.svg");
+			// initialize the multiselect dropdown menu 
+			var $plate = $('#plate').selectize({
+				delimiter: ',',
+				create: false,
+				maxItems: 8,
+			})
+			//get the object of the multiselect dropdown
+			plate = $plate[0].selectize
+			
+			//when nothing on the plate, disable the synthesize button
+			plate.on("change", function(event) {
+				if(listen_plate_change ==true){
+				if(plate.items.length==0){
+					$("#synthesize_button").attr("disabled", true)
+				}else{
+					$("#synthesize_button").attr("disabled", false)
+				}
+				}
+			})
+			
+			//get ingredients of all food types
+			$.post(serveraddress + "ingredients",null, success = function(data) {
+				ingredients = data
+				auto_select()
+				refresh_multi_select(food_type)
+				feel_lucky()
+			});
+
+			
+			// get example numbers in the Gallery
+			$.ajax({
+				type: 'POST',
+				url: serveraddress + "example_number",
+				contentType: "application/json",
+				data: {"id":1},
+				success: function(data) {
+					example_number = data['number']
+					example_dish()
+				}
+			});
+			
+			
+
+		})
+		
+// $(".scroll_button").click(function () {
+//         var n = $(this)[0].id;
+// 		console.log(n)
+//         switch (n){
+//             case "scroll_cook": x = 240; break;
+//             case "scroll_explore": x = 1250; break;
+//             case "scroll_learn": x = 2200; break;
+//             case "scroll_contact": x = 2600; break;
+//             default: x = 252;
+//         }
+//         $("body,html").scrollTop(x);
+//     });
+	
+		//Choosing a different food type
+		function food_type_ratio_onclick() {
+			// listen_plate_change = false
+			// plate.clear()
+			
+			// $("#generate_image_div").empty()
+			var radios = document.getElementsByName("food_type_ratio");
+			var value = 0;
+			for (var i = 0; i < radios.length; i++) {
+				if (radios[i].checked == true) {
+					food_type = radios[i].value;
+				}
+			}
+			refresh_multi_select(food_type)
+			clearInterval(timeClock);
+			feel_lucky()
+		}
+		
+		// after choosing a different food type, refresh the multiselect dropdown
+		function refresh_multi_select(food_type) {
+			plate.clearOptions()
+			for (i = 0; i < ingredients[food_type].length; i++) {
+				plate.addOption({
+					value: ingredients[food_type][i]["value"],
+					text: ingredients[food_type][i]["value"]
+				})
+			}
+		}
+		
+		//This function will return users a random dish. But simply chosing two random dishes may return a same one twice.
+		//available_example is a list to store examples that haven't been showed
+		function example_dish() {
+			//if all examples have been displayed for once, add all examples to the list
+			if(available_example.length==0){
+				for(i=0;i<example_number;i++){
+					available_example.push(i)
+				}
+			}
+			//choose a random example from the list and remove it from the list
+			var chosen_position = Math.floor(Math.random()*available_example.length)
+			var chosen_value =available_example[chosen_position]
+			available_example.splice(chosen_position,1)
+			$("#example_real_image").attr('src', serveraddress + "static/assets/examples/" + "real"+chosen_value+".png");
+			$("#example_fake_image").attr('src', serveraddress + "static/assets/examples/" +"fake"+chosen_value+".png");
+			//Aftering getting the image, request igredients from the server.
+			$.ajax({
+				type: 'POST',
+				url: serveraddress + "one_example",
+				contentType: "application/json",
+				data: JSON.stringify( {
+				"number": chosen_value
+			}),
+				success: function(data) {
+				$("#example_label_div").empty()
+					$("#example_label_div").append("<label style='font-size: 18px;height: 28px;'>Ingredients:&nbsp;&nbsp;&nbsp;</label>")
+					for(i=0;i<data["ingredients"].length;i++){
+					$("#example_label_div").append("<div class='labeldiv'><label class='labelwithboader'>"+data["ingredients"][i]+"</label></div>")
+					}
+				}
+			});
+			
+		}
+
+		function submit_rating() {
+			// if no value selected in the rating ratio, return.
+			if($('input[name=rating_ratio]:checked').val()==null){
+				return
+			}
+			$.ajax({
+				type: 'POST',
+				url: serveraddress + "submit_rating",
+				contentType: "application/json",
+				data: JSON.stringify({
+					"image_name": generated_image_name,
+					"feedback": $('input[name=rating_ratio]:checked').val()
+				}),
+				success: function(data) {
+					// after rating , disable the rating button
+					document.getElementById("rating_button").innerHTML = "Thanks!";
+					$("#rating_button").attr("disabled", true)
+					is_rated = true
+
+					$("#synthesize_button").attr("disabled",false)
+					$("#synthesize_button").text("Create"); 
+					$("#feel_lucky_button").attr("disabled",false)
+					$("#feel_lucky_button").text("Feel Lucky"); 
+					$("#salad_ratio").attr("disabled",false)
+					$("#muffin_ratio").attr("disabled",false)
+					$("#cookie_ratio").attr("disabled",false)
+					
+				}
+			});
+		}
+		
+
+		//genereate an image using five random ingredients
+		function feel_lucky() {
+			
+			$.ajax({
+				type: 'POST',
+				url: serveraddress + "random_recipe",
+				contentType: "application/json",
+				data: JSON.stringify({
+					"food_type": food_type
+				}),
+				success: function(data) {
+					listen_plate_change = false
+					plate.clear()
+					for (i = 0; i < data["random_recipe"].length; i++) {
+						plate.addOption({
+							value: data["random_recipe"][i],
+							text:data["random_recipe"][i]
+						})
+						plate.addItem(data["random_recipe"][i], true)
+					}
+					cook_recipe(data["random_recipe"])
+					listen_plate_change = true
+					// $("#synthesize_button").attr("disabled", false)
+				}
+			});
+			
+			
+		}
+
+		function cook_recipe(recipe){
+			$.ajax({
+				type: 'POST',
+				url: serveraddress + "generate_image2",
+				contentType: "application/json",
+				data: JSON.stringify({
+					"food_type": food_type,
+					"ingredients": recipe
+				}),
+				success: function(data) {
+					//the server will return the name of the generated file, update the view using the file name
+					//$("#generate_image_div").empty()
+					// $("#generate_image_div").append("<img id='generated_image' style='width:512px;height:512px;border-radius: 30px;'/>")
+					var elegenerated_image=document.getElementById("generated_image");
+					elegenerated_image.style.border="2px solid #FFFFFF"
+					$("#generated_image").attr('src', serveraddress + "static/generated_images/" + data["src"]);
+					generated_image_name = data["src"]
+					// after generating a new image, enable the rating button
+					$("#rating_button").attr("disabled", false)
+					$("#rating_button").text("Tell them!");
+					$('input[name=rating_ratio]:checked').prop("checked", false);
+					is_rated = false
+					// button_countdown()
+					
+				}
+			});
+		}
+		//generate an image based on ingredients in the multiselect dropdown and food type
+		function cook_plate() {
+			var radios = document.getElementsByName("food_type_ratio");
+			var value = 0;
+			for (var i = 0; i < radios.length; i++) {
+				if (radios[i].checked == true) {
+					food_type = radios[i].value;
+				}
+			}
+			cook_recipe(plate.items)
+		}
+		
+		function auto_select(){
+			
+			$("#salad_ratio").removeAttr("checked")
+			$("#cookie_ratio").removeAttr("checked")
+			$("#muffin_ratio").removeAttr("checked")
+			random_number = Math.random()
+			if(random_number<0.35){
+				$("#salad_ratio").attr("checked", "checked")
+				food_type=  "salad"
+			}else if(0.35<=random_number &&random_number<0.69){
+				$("#cookie_ratio").attr("checked", "checked")
+				food_type= "cookie"
+			}else{
+				$("#muffin_ratio").attr("checked", "checked")
+				food_type= "muffin"
+			}
+		}
+
+		function button_countdown(){
+			countdown = 9
+			settime(countdown)
+			timeClock=setInterval(function(){
+			        countdown--;
+			        settime(countdown)
+			       
+			        if (countdown <= 0 || is_rated == true) {
+			            clearInterval(timeClock);
+			            enableall()
+			        } 
+			    },1000)
+
+			// countdown = 9
+			// for(i = 10;i>0;i--){
+			// 	setTimeout(function() {
+			// 		console.log(i)
+			// 		settime() 
+			// 		},10000-i*1000)
+
+			// 	} 
+				
+		}
+
+		
+		function enableall(){
+			$("#synthesize_button").attr("disabled",false)
+			$("#synthesize_button").attr("disabled",false) 
+			$("#synthesize_button").text("Create");
+			$("#feel_lucky_button").attr("disabled",false)
+			$("#feel_lucky_button").text("Feel Lucky"); 
+			$("#salad_ratio").attr("disabled",false)
+			$("#muffin_ratio").attr("disabled",false)
+			$("#cookie_ratio").attr("disabled",false)
+		}
+		function scroll(elem){
+			$('html,body').animate({
+			        scrollTop: $(elem).offset().top},
+			        'slow');
+		}
+		function settime(countdown) {
+		if (countdown == 0) { 
+		enableall()
+		} else {
+
+		$("#salad_ratio").attr("disabled",true)
+		$("#muffin_ratio").attr("disabled",true)
+		$("#cookie_ratio").attr("disabled",true)
+		$("#synthesize_button").attr("disabled", true); 
+		$("#synthesize_button").text("Create"+"(" + countdown + ")"); 
+		$("#feel_lucky_button").attr("disabled",true)
+		$("#feel_lucky_button").text("Feel Lucky"+"(" + countdown + ")"); 
+		countdown-=1
+		} 
+		}
+		 function open_share(type) {
+		console.log(type)
+		 switch (type) {
+			case 'facebook':
+				window.open("http://www.facebook.com/sharer.php?u=http://foodai.cs.rutgers.edu/testpage");
+		        return
+			case 'twitter':
+				openUrl ="http://twitter.com/share?url="+encodeURIComponent(document.location.href)
+				
+				break;
+			// case 'google':
+			// 	window.open("https://plus.google.com/share?url=http://foodai.cs.rutgers.edu"+encodeURIComponent(u))
+			// 	break;
+			}
+			window.open(openUrl);
+			}
+// <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="CookGAN, the AI for cooking" data-url="https://www.foodai.cs.rutgers.edu" data-lang="en" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</script>
+</html>

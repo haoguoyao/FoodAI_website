@@ -1,0 +1,104 @@
+- example:
+    ingredients:
+        - pineapple
+        - salad green
+        - stick
+        - cherry tomato
+        - italian dressing
+    real_url: /assets/examples/real0.png
+    fake_url: /assets/examples/fake0.png
+- example:
+    ingredients:
+        - kale
+        - red pepper
+        - red onion
+        - cilantro
+        - sesame dressing
+    real_url: /assets/examples/real1.png
+    fake_url: /assets/examples/fake1.png
+- example:
+    ingredients:
+        - tender
+        - coating mix
+        - lettuce
+        - crouton
+        - cheese
+        - salad dressing
+    real_url: /assets/examples/real2.png
+    fake_url: /assets/examples/fake2.png
+- example:
+    ingredients:
+        - flour
+        - sugar
+        - skim milk
+        - egg
+        - vanilla extract
+        - lemon peel
+        - blueberry
+    real_url: /assets/examples/real3.png
+    fake_url: /assets/examples/fake3.png
+- example:
+    ingredients:
+        - sugar
+        - oil
+        - egg
+        - flour
+        - baking soda
+        - cinnamon
+        - vanilla
+        - salt
+        - carrot
+        - crushed pineapple
+    real_url: /assets/examples/real4.png
+    fake_url: /assets/examples/fake4.png
+- example:
+    ingredients:
+        - butter
+        - sugar
+        - vanilla extract
+        - egg
+        - flour
+        - baking soda
+        - cinnamon
+        - mashed banana
+        - chocolate chip
+    real_url: /assets/examples/real5.png
+    fake_url: /assets/examples/fake5.png
+- example:
+    ingredients:
+        - yellow cake mix
+        - egg
+        - vegetable oil
+        - chocolate chip
+    real_url: /assets/examples/real6.png
+    fake_url: /assets/examples/fake6.png
+- example:
+    ingredients:
+        - butter
+        - sugar
+        - baking soda
+        - salt
+        - egg
+        - flour
+        - raspberry jam
+        - shortening
+    real_url: /assets/examples/real7.png
+    fake_url: /assets/examples/fake7.png
+- example:
+    ingredients:
+        - butter
+        - shortening
+        - egg
+        - salt
+        - vanilla
+        - baking powder
+        - pumpkin
+        - flour
+        - sugar
+        - milk
+        - baking soda
+        - cinnamon
+        - brown sugar
+        - powdered sugar 
+    real_url: /assets/examples/real8.png
+    fake_url: /assets/examples/fake8.png

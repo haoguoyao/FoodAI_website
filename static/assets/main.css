@@ -1,0 +1,157 @@
+html {
+    font-family: "HelveticaNeue-Light";
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+a:link {
+    color: #1367a7;
+    font-size: 18px;
+}
+
+a:visited {
+    color: #5F67a7;
+}
+
+a:hover {
+    color: #208799;
+}
+
+hr {
+    width: 95%;
+}
+
+/* https://www.granneman.com/webdev/coding/css/centertables */
+table {
+    margin-left:auto; 
+    margin-right:auto;
+    width: 600px;
+    text-align: center;
+}
+
+.p-abstract {
+    font-size: 18px;
+    text-align: justify;
+}
+
+button {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.button-center {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -120%);
+}
+
+.div-choose-n-images {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.div-center {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* position: absolute; */
+    /* left: 50%;  */
+    /* transform: translate(-50%, 0%);  */
+}
+
+footer {
+    background-color: rgb(31, 31, 31);
+    text-align: center;
+    color: white;
+}
+
+.div-label {
+    justify-content: center;
+    display: flex;
+    height: 100%;
+    max-width: 100%;
+    /* background-color: red; */
+}
+
+.span-label {
+    color: white;
+    padding: 8px;
+    font-family: Arial;
+    background-color: #4CAF50;
+    margin-right: 5px;
+}
+
+.div-example-image {
+    margin-top: 5px;
+    justify-content: center;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    /* background-color: yellow; */
+}
+
+.button-another {
+    display:inline-block;
+    padding:0.3em 1.2em;
+    margin:3em 3em 0.3em 0;
+    height: 40px;
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#FFFFFF;
+    background-color:#4eb5f1;
+    text-align:center;
+    transition: all 0.2s;
+}
+.button-another:hover{
+    background-color:#4095c6;
+}
+
+.image-example{
+    float: left;
+    width: 128px;
+    margin-right: 10px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}

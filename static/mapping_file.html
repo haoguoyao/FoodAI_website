@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Mapping file</title>
+		<link rel="stylesheet" href="static/css/test.css" />
+		<link rel="stylesheet" href="css/test.css" />
+	</head>
+	<body style="margin: 20px;">
+	<div class="bigdiv" id="explore_div"style="background-image:linear-gradient(0deg, rgba(60, 144, 66, 0.5), rgba(60, 144, 66, 0.5)), url(images/learn_background.jpeg);background-repeat: no-repeat;background-size: cover;">
+	<h1 align="center" class="div_title">Dataset</h1>
+	<h2>Files:<br></h2>
+	<a style="color: cyan;"href = "files/list_of_all_ingredients.txt">list_of_all_ingredients.txt</a><br>
+	<a style="color: cyan;"href="files/list_of_merged_ingredients.txt">list_of_merged_ingredients.txt</a><br>
+	<a style="color: cyan;"href="files/replacement_dict.json">replacement_dict.json</a>
+	<h2>File Description:</h2>
+	The files are ingredients extracted from <a style="color: cyan;"href='http://pic2recipe.csail.mit.edu'/>Recipe1M</a> dataset.
+	We preprocessed these ingredients and merged ingredients with similar meanings into one.<br>
+	Ingredients are merged if they:<br>
+	• Are close together in Word2vec embedding space, which is trained on the titles, ingredients and instructions of Recipe1M.<br>
+	• Share two or three words.<br>
+	• Are mapped to the same item in Nutritionix.<br>
+	
+	<h2>Reference:<br></h2>
+	[1] Han, Fangda, Ricardo Guerrero, and Vladimir Pavlovic. "CookGAN: Meal Image Synthesis from Ingredients." The IEEE Winter Conference on Applications of Computer Vision. 2020.<br>
+	[2] Li, Jiatong, Ricardo Guerrero, and Vladimir Pavlovic. "Deep Cooking: Predicting Relative Food Ingredient Amounts from Images." Proceedings of the 5th International Workshop on Multimedia Assisted Dietary Management. 2019.<br>	
+</div>
+	</body>
+</html>
